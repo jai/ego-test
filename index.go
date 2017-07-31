@@ -81,6 +81,7 @@ func main() {
 	
 }
 
+//Function below inspired by https://github.com/Zenithar/mgoexport/blob/master/main.go
 func flatten(input bson.M, lkey string, flattened *map[string]interface{}) {
 	for rkey, value := range input {
 		key := lkey + rkey
@@ -100,7 +101,7 @@ func flatten(input bson.M, lkey string, flattened *map[string]interface{}) {
 		} else if _, ok := value.(bson.ObjectId); ok {
 			(*flattened)[key] = value.(bson.ObjectId).Hex
 		} else if _, ok := value.([]interface{}); ok {
-			
+
 		}
 	}
 }
